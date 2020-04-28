@@ -18,7 +18,7 @@
            cache:false,
 		   success:function(data){
               if(data=='0'){
-				window.location.href="admin.jsp"
+				window.location.href="admin.html"
 			  			}
 			 else{
 				 if(data=='1'){

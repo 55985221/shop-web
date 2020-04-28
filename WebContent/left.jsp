@@ -8,15 +8,7 @@
 			<script type="text/javascript" src="js/jquery.easing.js"></script>
 			<script type="text/javascript" src="js/jquery.accordion.js"></script>
 			
-					<%
-					
-				System.out.println(request.getAttribute("menu")+"ppppppp");
-			if(request.getAttribute("menu")==null){
-				request.getRequestDispatcher("menuServle?msg=menu").forward(request, response);
-				return;
-			}
-		
-		%>
+			
 		
 <script type="text/javascript">
 	$(function(){
