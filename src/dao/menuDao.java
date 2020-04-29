@@ -15,4 +15,5 @@ public static List getrolemenu(int roleid) {
 	List rolemenu=DButil.getList("SELECT * FROM rolemenu WHERE roleId=?;",rolemenuinfo.class,roleid);
 	return rolemenu;
 }
+
 }

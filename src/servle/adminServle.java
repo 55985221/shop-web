@@ -37,7 +37,7 @@ public class adminServle extends HttpServlet {
 			String password = request.getParameter("password");
 			admininfo admin = adminDao.admin(id, password);
 			if (admin != null) {
-					request.getSession().setAttribute("yonghu", admin);// 我是在这里添加的出错的位置在下面 去掉注释就可以运行在这里往域中存储的
+					request.getSession().setAttribute("yonghu", admin);
 					response.getWriter().write("0");
 				}
 			 else {
