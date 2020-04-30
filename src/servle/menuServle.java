@@ -66,7 +66,7 @@ public class menuServle extends HttpServlet {
 					}
 				}
 			}
-			System.out.println(menu.size());
+			
 			for (int i = 0; i < menu.size(); i++) {
 				menuinfo mn = menu.get(i);
 

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.pageinfo;
+import dao.menuDao;
 import dao.roleDao;
 import utils.pageutlie;
 
@@ -30,6 +31,33 @@ public class roleServle extends HttpServlet {
 			request.setAttribute("role", roleDao.getlistrole(page.getBeginRow(), page.getPagesize()));
 			request.getRequestDispatcher("role/role_menu.jsp").forward(request, response);
 			
+		}
+		else
+		if("rolemenu".equals(request.getParameter("msg"))) {
+		int roleid=Integer.parseInt(request.getParameter("id"));
+		request.setAttribute("roled", roleDao.role(roleid));
+		request.setAttribute("menu", menuDao.getrolemenus(0));
+		request.setAttribute("rolemenuid", roleDao.roleidString(roleid));
+		request.getRequestDispatcher("role/rolemenu_menu.jsp").forward(request, response);
+		}
+		else
+		if("updata".equals(request.getParameter("msg"))){
+		    int roleid=Integer.parseInt(request.getParameter("id"));
+		    String[] menuid=request.getParameterValues("rolemenu");
+		    if(roleDao.updata(roleid, menuid)) {
+		    	request.setAttribute("roled", roleDao.role(roleid));
+				request.setAttribute("menu", menuDao.getrolemenus(0));
+				request.setAttribute("rolemenuid", roleDao.roleidString(roleid));
+				request.setAttribute("tishi", "修改成功");
+				request.getRequestDispatcher("role/rolemenu_menu.jsp").forward(request, response);
+		    	
+		    }else {
+		    	request.setAttribute("roled", roleDao.role(roleid));
+				request.setAttribute("menu", menuDao.getrolemenus(0));
+				request.setAttribute("rolemenuid", roleDao.roleidString(roleid));
+				request.setAttribute("tishi", "修改失败");
+				request.getRequestDispatcher("role/rolemenu_menu.jsp").forward(request, response);
+		    }
 		}
 		
 	}

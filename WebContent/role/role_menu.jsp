@@ -89,9 +89,6 @@ alert("${delet}");
 				 </div>
 				 
 				 
-					<form action="adminServle" id="deletform" >
-					 <input type="hidden" name="msg" value="delets" >
-					 <input type="hidden" name="pageindex" value="${page.pageIndex }" >
 				 <table class="main_table" >
 				       <tr>
 				 					<th>角色名称</th> 	<th>角色描述</th> 	<th>操作</th>
@@ -101,7 +98,7 @@ alert("${delet}");
 				 	<tr>
 				 	<td>${roles.roleName }</td>
 				 	<td>${roles.des }</td>
-				 	<td>删除|修改|角色权限分配</td>
+				 	<td>删除|修改|<a href="roleServle?msg=rolemenu&id=${roles.id }">角色权限分配</a></td>
 				 	</tr>
 				 	</c:forEach>
 				   		
@@ -109,7 +106,7 @@ alert("${delet}");
 				   		 
 				 	
 				</table>
-				</form>
+			
 				
 				
 				<div class="div_page" >
