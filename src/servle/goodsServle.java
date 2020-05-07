@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import javax.servlet.http.Part;
 
 import beans.cateinfo;
 import beans.goodsinfo;
+
 import dao.goodsDao;
 import net.sf.json.JSONArray;
 
@@ -20,6 +22,7 @@ import net.sf.json.JSONArray;
  * Servlet implementation class goodsServle
  */
 @WebServlet("/goodsServle")
+@MultipartConfig
 public class goodsServle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
