@@ -4,7 +4,7 @@ public class cateinfo {
 private int id;
 private String cateName;
 private String des;
-private int parenId;
+private int parentId;
 public int getId() {
 	return id;
 }
@@ -23,11 +23,11 @@ public String getDes() {
 public void setDes(String des) {
 	this.des = des;
 }
-public int getParenId() {
-	return parenId;
+public int getParentId() {
+	return parentId;
 }
-public void setParenId(int parenId) {
-	this.parenId = parenId;
+public void setParentId(int parentId) {
+	this.parentId = parentId;
 }
 
 }

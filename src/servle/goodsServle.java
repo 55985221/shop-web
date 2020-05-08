@@ -14,9 +14,10 @@ import javax.servlet.http.Part;
 
 import beans.cateinfo;
 import beans.goodsinfo;
-
+import beans.pageinfo;
 import dao.goodsDao;
 import net.sf.json.JSONArray;
+import utils.pageutlie;
 
 /**
  * Servlet implementation class goodsServle
@@ -65,10 +66,41 @@ public class goodsServle extends HttpServlet {
 			request.getRequestDispatcher("/goods/goods_add.jsp").forward(request, response);
 		}else {
 			request.setAttribute("goods", goods);
-			request.setAttribute("tishi", "添加成功");
+			request.setAttribute("tishi", "添加失败");
 			request.getRequestDispatcher("/goods/goods_add.jsp").forward(request, response);
 		}
 	}
+	else
+	if("manage".equals(request.getParameter("msg"))) {
+		int index=Integer.parseInt(request.getParameter("pageindex")==null? "1":request.getParameter("pageindex"));
+		int pagesize=20;
+		int bigcateid=Integer.parseInt(request.getParameter("bigcateid")==null? "0":request.getParameter("bigcateid"));
+		int smallcateid=Integer.parseInt(request.getParameter("smallcateid")==null? "0":request.getParameter("smallcateid"));;
+		String goodsname=request.getParameter("goodsname");
+		int pageconten=goodsDao.goodscount(bigcateid, smallcateid, goodsname);
+		pageinfo page=pageutlie.getpageinfo(pagesize, pageconten, index);
+		List lt=goodsDao.getgoods(bigcateid, smallcateid, goodsname, page.getBeginRow(), page.getPagesize());
+		List cate=goodsDao.getcate();
+		request.setAttribute("cate", cate);
+		request.setAttribute("page", page);
+		request.setAttribute("goodsinfo",lt );
+		request.getRequestDispatcher("/goods/goods_mange.jsp").forward(request, response);
+		
+	}
+	else
+	if("goodsimg".equals(request.getParameter("msg"))) {
+		int id=Integer.parseInt(request.getParameter("goodsimg"));
+		goodsinfo img=goodsDao.getimg(id);
+		System.out.println(img.getPictureDate().length);
+		response.getOutputStream().write(img.getPictureDate());
+	}
+
+		
+	
+	
+	
+	
+	
 	
 	}
 

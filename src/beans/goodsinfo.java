@@ -6,7 +6,9 @@ public class goodsinfo {
 private int id;
 private String goodsName;
 private int bigCateId;
+private String bigCateName;
 private int smallCateId;
+private String smallCateName;
 private double price;
 private String des;
 private String unit;
@@ -73,4 +75,16 @@ public byte[] getPictureDate() {
 public void setPictureDate(byte[] pictureDate) {
 	this.pictureDate = pictureDate;
 } 
+public String getBigCateName() {
+	return bigCateName;
+}
+public void setBigCateName(String bigCateName) {
+	this.bigCateName = bigCateName;
+}
+public String getSmallCateName() {
+	return smallCateName;
+}
+public void setSmallCateName(String smallCateName) {
+	this.smallCateName = smallCateName;
+}
 }

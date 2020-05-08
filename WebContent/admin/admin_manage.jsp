@@ -142,14 +142,14 @@ alert("${delet}");
 				
 				
 				<div class="div_page" >
-					  <div class="div_page_left">    共有 <label>${pageinfo.rowCount }</label> 条记录，当前第 <label>${pageinfo.pageIndex }</label> 页，共 <label>${pageinfo.pageCount }</label> 页	</div>		
+					  <div class="div_page_left">    共有 <label>${page.rowCount }</label> 条记录，当前第 <label>${page.pageIndex }</label> 页，共 <label>${page.pageCount }</label> 页	</div>		
 					  <div class="div_page_right" > 	 
 					  			 <a href="adminServle?msg=manage&pageindex=1">首页</a>
-				  	 			 <c:if test="${ pageinfo.pageIndex!=1}">
-				  	 			 <a href="adminServle?msg=manage&pageindex=${pageinfo.pageIndex-1 }">上一页</a>
+				  	 			 <c:if test="${ page.pageIndex!=1}">
+				  	 			 <a href="adminServle?msg=manage&pageindex=${page.pageIndex-1 }">上一页</a>
 				  	 			 </c:if>
-					  			 <c:if test="${pageinfo.pageIndex<pageinfo.pageCount }">
-				  	 		     <a href="adminServle?msg=manage&pageindex=${pageinfo.pageIndex+1 }">下一页</a>
+					  			 <c:if test="${page.pageIndex<page.pageCount }">
+				  	 		     <a href="adminServle?msg=manage&pageindex=${page.pageIndex+1 }">下一页</a>
 				  	 		     </c:if>
 
 					  	  <button onclick="zhuandao()">转到</button>

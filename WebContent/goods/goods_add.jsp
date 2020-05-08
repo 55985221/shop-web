@@ -64,7 +64,7 @@ function getObjectURL(file) {        var url = null ;
 
 
 
-	$("#goodsimg").change(function(){
+	$("#ims").change(function(){
 		url=getObjectURL(this.files[0]);
 		$("#tp").attr("src",url);
 	})
@@ -198,7 +198,7 @@ function getObjectURL(file) {        var url = null ;
 		 		<tr>
 		 			 	<td class="td_info">商品图片:</td>	
 		 			 	<td class="td_input_short"> 
-		 			 		<input type="file"    name="ims" /> 
+		 			 		<input type="file"    name="ims" id="ims"/> 
 		 			 		<img  src="" id="tp">
 		 			 		
 		 			 	</td>   
