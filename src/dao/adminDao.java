@@ -7,11 +7,11 @@ import beans.admininfo;
 
 public class adminDao {
 public static admininfo  admin(String id,String password) {
-	admininfo admin=DButil.getall("SELECT * FROM admininfo WHERE adminName=? and password=?  ",admininfo.class,id,password);
+	admininfo admin=DButil.getobj("SELECT * FROM admininfo WHERE adminName=? and password=?  ",admininfo.class,id,password);
 	return admin;
 }
 public static admininfo  admin(String id) {
-	admininfo admin=DButil.getall("SELECT * FROM admininfo WHERE adminName=?  ",admininfo.class,id);
+	admininfo admin=DButil.getobj("SELECT * FROM admininfo WHERE adminName=?  ",admininfo.class,id);
 	return admin;
 }
 public static int adminup(admininfo admin) {

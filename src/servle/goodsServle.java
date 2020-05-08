@@ -91,8 +91,8 @@ public class goodsServle extends HttpServlet {
 	if("goodsimg".equals(request.getParameter("msg"))) {
 		int id=Integer.parseInt(request.getParameter("goodsimg"));
 		goodsinfo img=goodsDao.getimg(id);
-		System.out.println(img.getPictureDate().length);
-		response.getOutputStream().write(img.getPictureDate());
+		System.out.println(img.getPictureData().length);
+		response.getOutputStream().write(img.getPictureData());
 	}
 
 		

@@ -19,7 +19,7 @@ public static int getroleconten() {
 	return a;
 }
 public static roleinfo role(int roleid){
-	roleinfo role= DButil.getall("SELECT * FROM roleinfo where id=?;",roleinfo.class,roleid)  ;
+	roleinfo role= DButil.getobj("SELECT * FROM roleinfo where id=?;",roleinfo.class,roleid)  ;
 			return  role;
 }
 public static String  roleidString(int roleId) {

@@ -14,7 +14,7 @@ private String des;
 private String unit;
 private String producter;
 private Date editDate;
-private byte[] pictureDate;
+private byte[] pictureData;
 public int getId() {
 	return id;
 }
@@ -69,11 +69,11 @@ public Date getEditDate() {
 public void setEditDate(Date editDate) {
 	this.editDate = editDate;
 }
-public byte[] getPictureDate() {
-	return pictureDate;
+public byte[] getPictureData() {
+	return pictureData;
 }
-public void setPictureDate(byte[] pictureDate) {
-	this.pictureDate = pictureDate;
+public void setPictureData(byte[] pictureData) {
+	this.pictureData = pictureData;
 } 
 public String getBigCateName() {
 	return bigCateName;
