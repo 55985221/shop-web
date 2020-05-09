@@ -16,7 +16,7 @@ public static admininfo  admin(String id) {
 }
 public static int adminup(admininfo admin) {
 	int a=0;
-	a=DButil.updata("INSERT INTO admininfo(adminName,PASSWORD,note) VALUES (?,?,?);", admin.getAdminName(),admin.getPassword(),admin.getNote());
+	a=DButil.updata("INSERT INTO admininfo(adminName,PASSWORD,note,state) VALUES (?,?,?,?);", admin.getAdminName(),admin.getPassword(),admin.getNote(),admin.getState());
 	return a;
 }
 public static int pagecount() {

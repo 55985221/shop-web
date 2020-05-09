@@ -159,7 +159,7 @@ alert("${deletmsg }")
 				 </tr>
 				 <c:forEach items="${goodsinfo }" var="goods">
 				 <tr>
-				 <td><input type="checkbox"></td> <td>${goods.goodsName }</td><td>${goods.unit}</td><td>${goods.bigCateName }</td><td>${goods.smallCateName }</td><td><a  id="${goods.id}" class="a_img">查看</a>|<a>修改</a>|<a href="goodsServle?msg=delet&id=${goods.id }" id="deletgoods" onclick="return delet(this)">删除</a></td>
+				 <td><input type="checkbox"></td> <td>${goods.goodsName }</td><td>${goods.unit}</td><td>${goods.bigCateName }</td><td>${goods.smallCateName }</td><td><a  id="${goods.id}" class="a_img">查看</a>|<a href="goodsServle?msg=updata&id=${goods.id }">修改</a>|<a href="goodsServle?msg=delet&id=${goods.id }" id="deletgoods" onclick="return delet(this)">删除</a></td>
 				 </tr>
 				 </c:forEach>
 				 </table>
@@ -178,7 +178,7 @@ alert("${deletmsg }")
 				  	 			 <c:if test="${ page.pageIndex!=1}">
 				  	 			 <a href="goodsServle?msg=manage&pageindex=${page.pageIndex-1 }">上一页</a>
 				  	 			 </c:if>
-					  			 <c:if test="${page.pageIndex<pageinfo.pageCount }">
+					  			 <c:if test="${page.pageIndex<page.pageCount }">
 				  	 		     <a href="goodsServle?msg=manage&pageindex=${page.pageIndex+1 }">下一页</a>
 				  	 		     </c:if>
 

@@ -100,7 +100,7 @@
 		 <div class="div_titlename"> <img src="images/san_jiao.gif" ><span>管理员添加</span></div>
 	 </div>
 				 
-	 <form action="adminServle" id="adminaddform" >
+	 <form action="adminServle" id="adminaddform" method="post">
 		 <table class="edit_table" >
 		 		<tr>
 		 			 	<td class="td_info">用户账号:</td>	
