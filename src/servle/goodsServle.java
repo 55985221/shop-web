@@ -58,7 +58,7 @@ public class goodsServle extends HttpServlet {
 		goods.setUnit(request.getParameter("unit"));
 		goods.setPrice(Double.parseDouble(request.getParameter("price")));
 		goods.setProducter(request.getParameter("pd"));
-		goods.setPictureDate(imgs);
+		goods.setPictureData(imgs);
 		goods.setDes(request.getParameter("des"));
 		if(goodsDao.goodsadd(goods)>0) {
 			request.setAttribute("goods", goods);
@@ -91,8 +91,44 @@ public class goodsServle extends HttpServlet {
 	if("goodsimg".equals(request.getParameter("msg"))) {
 		int id=Integer.parseInt(request.getParameter("goodsimg"));
 		goodsinfo img=goodsDao.getimg(id);
-		System.out.println(img.getPictureData().length);
+        response.setContentType("image/png;charset=utf8");
 		response.getOutputStream().write(img.getPictureData());
+	}
+	else
+	if("delet".equals(request.getParameter("msg"))) {
+		int id=Integer.parseInt(request.getParameter("id"));
+	     if(goodsDao.deletgoods(id)>0) {
+	    	 request.setAttribute("deletmsg", "É¾³ý³É¹¦");
+	    	 int index=Integer.parseInt(request.getParameter("pageindex")==null? "1":request.getParameter("pageindex"));
+	 		int pagesize=20;
+	 		int bigcateid=Integer.parseInt(request.getParameter("bigcateid")==null? "0":request.getParameter("bigcateid"));
+	 		int smallcateid=Integer.parseInt(request.getParameter("smallcateid")==null? "0":request.getParameter("smallcateid"));;
+	 		String goodsname=request.getParameter("goodsname");
+	 		int pageconten=goodsDao.goodscount(bigcateid, smallcateid, goodsname);
+	 		pageinfo page=pageutlie.getpageinfo(pagesize, pageconten, index);
+	 		List lt=goodsDao.getgoods(bigcateid, smallcateid, goodsname, page.getBeginRow(), page.getPagesize());
+	 		List cate=goodsDao.getcate();
+	 		request.setAttribute("cate", cate);
+	 		request.setAttribute("page", page);
+	 		request.setAttribute("goodsinfo",lt );
+	 		request.getRequestDispatcher("/goods/goods_mange.jsp").forward(request, response);
+	     }else {
+	    	 request.setAttribute("deletmsg", "É¾³ýÊ§°Ü");
+	    	 int index=Integer.parseInt(request.getParameter("pageindex")==null? "1":request.getParameter("pageindex"));
+	 		int pagesize=20;
+	 		int bigcateid=Integer.parseInt(request.getParameter("bigcateid")==null? "0":request.getParameter("bigcateid"));
+	 		int smallcateid=Integer.parseInt(request.getParameter("smallcateid")==null? "0":request.getParameter("smallcateid"));;
+	 		String goodsname=request.getParameter("goodsname");
+	 		int pageconten=goodsDao.goodscount(bigcateid, smallcateid, goodsname);
+	 		pageinfo page=pageutlie.getpageinfo(pagesize, pageconten, index);
+	 		List lt=goodsDao.getgoods(bigcateid, smallcateid, goodsname, page.getBeginRow(), page.getPagesize());
+	 		List cate=goodsDao.getcate();
+	 		request.setAttribute("cate", cate);
+	 		request.setAttribute("page", page);
+	 		request.setAttribute("goodsinfo",lt );
+	 		request.getRequestDispatcher("/goods/goods_mange.jsp").forward(request, response);
+	     }
+		
 	}
 
 		

@@ -31,8 +31,12 @@
 	<style>
      .show{
          display:block;
-		 position: absolute;
+		 position: fixed;
 
+	 }
+	 img{
+		 max-width:500px;
+		 max-height: 370px;
 	 }
 	 .shom{
        display: none;
@@ -42,10 +46,7 @@
     <script>
 $(function(){
  
-
-
-
-
+//选择框的联动第一个选择框数据改变呈现出第二个选择框
 	$("#menu1").change(function(){
  var sevalue=$("#menu1 option:selected").val();
 	if(sevalue!=0){
@@ -68,17 +69,56 @@ $(function(){
 		  });
 	}
 })
+//图片的呈现利用鼠标的坐标更改图片位置一开始是选择用标签进行定位但是感觉太麻烦还是鼠标坐标获取方便但是不确定别的浏览器是否能用
+$(".a_img").hover(function(e){
+x=e.pageX-350;
+y=e.pageY-150;
+$("#img_sh").removeClass();
+$("#img_sh").addClass("show");
+$("#img_sh").css("left",x+"px");
+$("#img_sh").css("top",y+"px");
+$("#img_s").attr("src","<%=path%>goodsServle?msg=goodsimg&goodsimg="+this.id);
 
-
+},function(e){
+$("#img_sh").removeClass();
+$("#img_sh").addClass("shom");
 });
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+});
+
+
+//判断用户数否删除
+function delet(th){
+if(confirm("确定删除商品吗？"))
+{
+	return true;
+}else{
+	return false;
+}
+}
+
+
+<c:if test="${!empty deletmsg}">
+alert("${deletmsg }")
+</c:if>
+
 	
     </script>
-
 	<link rel="stylesheet" type="text/css" href="css/maintable.css" ></link>
 
 	
@@ -119,7 +159,7 @@ $(function(){
 				 </tr>
 				 <c:forEach items="${goodsinfo }" var="goods">
 				 <tr>
-				 <td><input type="checkbox"></td> <td>${goods.goodsName }</td><td>${goods.unit}</td><td>${goods.bigCateName }</td><td>${goods.smallCateName }</td><td><a  id="${goods.id}" class="a_img">查看</a>|<a>查看</a>|<a>查看</a></td>
+				 <td><input type="checkbox"></td> <td>${goods.goodsName }</td><td>${goods.unit}</td><td>${goods.bigCateName }</td><td>${goods.smallCateName }</td><td><a  id="${goods.id}" class="a_img">查看</a>|<a>修改</a>|<a href="goodsServle?msg=delet&id=${goods.id }" id="deletgoods" onclick="return delet(this)">删除</a></td>
 				 </tr>
 				 </c:forEach>
 				 </table>
@@ -127,7 +167,7 @@ $(function(){
 				 
 			
 				 	
-		<div id="img_sh" >
+		<div id="img_sh"  class="shom">
 	    <img  id="img_s" >
 		</div>
 				

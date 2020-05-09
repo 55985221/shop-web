@@ -67,5 +67,9 @@ public static void main(String[] args) {
 	goodsinfo gd= getimg(88);
 	System.out.println(gd.getPictureData().length);
 }
-
+public static int  deletgoods(int id) {
+int a;
+a=DButil.updata("DELETE FROM goodsinfo WHERE id=?;", id);
+return a;
+}
 }
