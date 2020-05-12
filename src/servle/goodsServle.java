@@ -44,10 +44,6 @@ public class goodsServle extends HttpServlet {
 		
 	}
 	else
-	if("goodsimg".equals("w")) {
-			
-		}
-	else
 	if("goodsadd".equals(request.getParameter("msg"))) {
 		 goodsinfo goods=goodsadd(request,response);
 		if(goodsDao.goodsadd(goods)>0) {
@@ -68,7 +64,8 @@ public class goodsServle extends HttpServlet {
 		int id=Integer.parseInt(request.getParameter("goodsimg"));
 		goodsinfo img=goodsDao.getimg(id);
         response.setContentType("image/png;charset=utf8");
-		response.getOutputStream().write(img.getPictureData());
+        if(img.getPictureData()!=null) {
+		response.getOutputStream().write(img.getPictureData());}
 	}
 	else
 	if("delet".equals(request.getParameter("msg"))) {

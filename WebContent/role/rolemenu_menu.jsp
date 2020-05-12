@@ -19,25 +19,24 @@
   </head>
 <script>
   var str="${rolemenuid}";
- Array.prototype.cn=function(e){
-	 for(i=0;i<this.length;i++){
-	
-		 if(this[i]==e){
+  
+ Array.prototype.cn=function(w){
+	 
+	 for(zw=0;zw<this.length;zw++){
+		 alert(zw);
+		 if(this[zw]==w){
 			 
         return true;
 		 }
 		 return false;
+		 
 	 }
  }
-
  var menuids=str.split(",");
- 
 $(function(){
 
 	$("input[type=checkbox]").each(function(){
-		
 	 if(menuids.cn(this.value)){
-		  
 		 this.checked=true;
 	 }
   

@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="css/top.css" ></link>
 	<script type="text/javascript" src="js/jquery-1.8.0.js"></script>
   </head>
-
+<link rel="stylesheet" type="text/css" href="css/maintable.css" ></link>
   <body>
       <table id="t_head">
 		   		<tr>
